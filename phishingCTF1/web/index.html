@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing CTF - Easy Mode</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎣 Phishing Detection CTF</h1>
+            <p class="subtitle">Easy Mode - Security Awareness Challenge</p>
+        </header>
+        
+        <div class="progress-card">
+            <h3>Flag Progress</h3>
+            <div class="flag-display" id="flag-display">SECOPS{???_???_???}</div>
+            <div class="parts-counter">Parts Found: <span id="parts-found">0/3</span></div>
+        </div>
+
+        <div class="challenge-card">
+            <div class="challenge-header">
+                <span class="challenge-number">01</span>
+                <h2>Email Analysis</h2>
+            </div>
+            <p class="challenge-desc">Identify the legitimate email. Once found, inspect the source code carefully to find the first flag part.</p>
+            <div class="button-group">
+                <button class="btn" onclick="checkEmail(1)">
+                    <span class="btn-icon">📧</span>
+                    Email A: Password Reset
+                </button>
+                <button class="btn" onclick="checkEmail(2)">
+                    <span class="btn-icon">📧</span>
+                    Email B: IT Support
+                </button>
+                <button class="btn" onclick="checkEmail(3)">
+                    <span class="btn-icon">📧</span>
+                    Email C: CEO Request
+                </button>
+            </div>
+            <div id="email-hint" class="hint-box"></div>
+            
+            <div class="flag-input-section" id="flag-input-1" style="display:none;">
+                <label for="flag-part-1">Enter Flag Part 1:</label>
+                <div class="input-group">
+                    <input type="text" id="flag-part-1" class="flag-part-input" placeholder="SECOPS{...">
+                    <button class="btn btn-primary" onclick="submitFlagPart(1)">Submit Part 1</button>
+                </div>
+                <div id="flag-result-1" class="result-box"></div>
+            </div>
+        </div>
+
+        <div class="challenge-card" id="challenge2" style="display:none;">
+            <div class="challenge-header">
+                <span class="challenge-number">02</span>
+                <h2>Link Inspector</h2>
+            </div>
+            <p class="challenge-desc">Identify the safe link by hovering over each one. The safe link contains an encoded flag part - decode it!</p>
+            <div class="button-group">
+                <a href="#" onclick="return checkLink(1)" class="btn link-btn" title="https://www.micros0ft.com/login">
+                    <span class="btn-icon">🔗</span>
+                    Microsoft Login
+                </a>
+                <a href="#" onclick="return checkLink(2)" class="btn link-btn" title="https://www.paypa1.com/secure">
+                    <span class="btn-icon">🔗</span>
+                    PayPal Secure
+                </a>
+                <a href="#" onclick="return checkLink(3)" class="btn link-btn" data-encoded="KRUDEX3SIVQUYXY=" title="https://www.github.com/security">
+                    <span class="btn-icon">🔗</span>
+                    GitHub Security
+                </a>
+            </div>
+            <div id="link-hint" class="hint-box"></div>
+            
+            <div class="flag-input-section" id="flag-input-2" style="display:none;">
+                <label for="flag-part-2">Enter Flag Part 2:</label>
+                <div class="input-group">
+                    <input type="text" id="flag-part-2" class="flag-part-input" placeholder="...">
+                    <button class="btn btn-primary" onclick="submitFlagPart(2)">Submit Part 2</button>
+                </div>
+                <div id="flag-result-2" class="result-box"></div>
+            </div>
+        </div>
+
+        <div class="challenge-card" id="challenge3" style="display:none;">
+            <div class="challenge-header">
+                <span class="challenge-number">03</span>
+                <h2>Fake Page Detection</h2>
+            </div>
+            <p class="challenge-desc">Open each page and inspect carefully. One contains suspicious JavaScript - check the console and source code for the final flag part.</p>
+            <div class="button-group">
+                <button class="btn" onclick="openPage('fake-microsoft.html')">
+                    <span class="btn-icon">🌐</span>
+                    Microsoft Login Page
+                </button>
+                <button class="btn" onclick="openPage('fake-paypal.html')">
+                    <span class="btn-icon">🌐</span>
+                    PayPal Payment Page
+                </button>
+                <button class="btn" onclick="openPage('fake-bank.html')">
+                    <span class="btn-icon">🌐</span>
+                    Bank Login Page
+                </button>
+            </div>
+            <div id="page-hint" class="hint-box"></div>
+            
+            <div class="flag-input-section" id="flag-input-3" style="display:none;">
+                <label for="flag-part-3">Enter Flag Part 3:</label>
+                <div class="input-group">
+                    <input type="text" id="flag-part-3" class="flag-part-input" placeholder="...}">
+                    <button class="btn btn-primary" onclick="submitFlagPart(3)">Submit Part 3</button>
+                </div>
+                <div id="flag-result-3" class="result-box"></div>
+            </div>
+        </div>
+
+        <div class="challenge-card final-card" id="final-submit" style="display:none;">
+            <div class="challenge-header">
+                <span class="challenge-number">🏁</span>
+                <h2>Final Submission</h2>
+            </div>
+            <p class="challenge-desc">All parts collected! Submit the complete flag to finish the CTF.</p>
+            <div class="input-group">
+                <input type="text" id="final-flag" placeholder="SECOPS{...}" class="flag-input">
+                <button class="btn btn-primary" onclick="submitFinalFlag()">Submit Complete Flag</button>
+            </div>
+            <div id="final-result" class="result-box"></div>
+        </div>
+
+        <footer>
+            <p>Created by <a href="https://github.com/b1l4l-sec" target="_blank" rel="noopener">b1l4l</a></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

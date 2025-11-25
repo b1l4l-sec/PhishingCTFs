@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Email B - IT Support Notification</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            padding: 20px;
+            background: #f6f8fa;
+            color: #24292f;
+        }
+        .email-container {
+            background: white;
+            padding: 30px;
+            border-radius: 6px;
+            max-width: 650px;
+            margin: 0 auto;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        }
+        .email-header {
+            border-bottom: 2px solid #d0d7de;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        .email-header div {
+            margin: 5px 0;
+        }
+        .email-header strong {
+            display: inline-block;
+            width: 80px;
+            color: #57606a;
+        }
+        .email-body {
+            line-height: 1.6;
+        }
+        .email-footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #d0d7de;
+            color: #57606a;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <div><strong>From:</strong> it-support@yourcompany.com</div>
+            <div><strong>To:</strong> all-staff@yourcompany.com</div>
+            <div><strong>Subject:</strong> System Maintenance Notification</div>
+            <div><strong>Date:</strong> Monday, November 24, 2025 09:15 AM</div>
+        </div>
+        
+        <div class="email-body">
+            <p>Hello Team,</p>
+            
+            <p>This is to inform you that our IT department will be performing scheduled system maintenance this coming weekend:</p>
+            
+            <p><strong>Maintenance Window:</strong><br>
+            Saturday, November 29, 2025<br>
+            10:00 PM - 2:00 AM (EST)</p>
+            
+            <p><strong>Affected Systems:</strong><br>
+            - Email services (brief interruption possible)<br>
+            - Internal file sharing<br>
+            - VPN access</p>
+            
+            <p><strong>Action Required:</strong> None. All systems will be automatically restored.</p>
+            
+            <p>If you experience any issues after the maintenance window, please contact IT Support:</p>
+            <ul>
+                <li>Extension: 5555</li>
+                <li>Email: it-support@yourcompany.com</li>
+                <li>Help Desk Portal: https://helpdesk.yourcompany.com</li>
+            </ul>
+            
+            <p>Thank you for your patience.</p>
+            
+            <p>Best regards,<br>
+            <strong>IT Support Team</strong><br>
+            YourCompany Inc.</p>
+        </div>
+        
+        <div class="email-footer">
+            This email was sent from an official company address. For security verification, check the sender's domain matches @yourcompany.com
+        </div>
+    </div>
+    
+    <!-- 
+        =================================================================
+        LEGITIMATE EMAIL INDICATORS:
+        - Proper company domain (@yourcompany.com)
+        - Professional formatting and tone
+        - No urgent call-to-action or threats
+        - No suspicious links or attachments
+        - Provides legitimate contact information
+        - Informational only, no action required
+        =================================================================
+    -->
+    
+    <!-- Additional metadata -->
+    <div style="display:none;">
+        Email-ID: MSG-2025-11-24-091534-IT-MAINT
+        Classification: Internal Communication
+        Security-Level: Normal
+    </div>
+    
+    <!-- System headers -->
+    <!--
+        X-Mailer: CompanyMailSystem v2.4
+        X-Originating-IP: [10.20.30.40]
+        X-SPF-Result: Pass
+        X-DKIM-Result: Pass
+        Authentication-Results: pass
+    -->
+    
+    <!-- 
+        ============================================================
+        🚩 FLAG PART 1 HIDDEN BELOW - KEEP SCROLLING IN SOURCE CODE
+        ============================================================
+    -->
+    
+    <script>
+        // Email tracking (legitimate)
+        const emailId = 'MSG-2025-11-24-091534';
+        const timestamp = new Date('2025-11-24T09:15:34Z');
+        
+        // Legitimate email metadata
+        const metadata = {
+            sender: 'it-support@yourcompany.com',
+            recipient: 'all-staff@yourcompany.com',
+            authenticated: true,
+            spf_pass: true,
+            dkim_pass: true,
+            encrypted: true
+        };
+        
+        // Email opened tracking
+        if (document.readyState === 'complete') {
+            console.log('Email viewed at:', new Date());
+        }
+    </script>
+    
+    <!-- More legitimate metadata -->
+    <!--
+        Message-Transport: SMTP/TLS
+        Server-Signature: mail.yourcompany.com
+        Content-Transfer-Encoding: 7bit
+        MIME-Version: 1.0
+    -->
+    
+    <!-- 
+        =============================================================
+        SCROLL MORE...
+        =============================================================
+    -->
+    
+    <!-- Email footer data -->
+    <!--
+        Company: YourCompany Inc.
+        Address: 123 Business Ave, Tech City, TC 12345
+        Phone: +1 (555) 123-4567
+        Unsubscribe: Not applicable for internal emails
+    -->
+    
+    <!-- 
+        =============================================================
+        ALMOST THERE...
+        =============================================================
+    -->
+    
+    <!-- Legal disclaimers -->
+    <!--
+        CONFIDENTIALITY NOTICE: This email and any attachments are
+        confidential and intended solely for the use of the individual
+        or entity to whom they are addressed.
+        
+        If you have received this email in error, please notify the
+        sender immediately and delete this message.
+    -->
+    
+    <!-- 
+        =============================================================
+        🎯 FLAG PART 1: SECOPS{y0u_r2_
+        =============================================================
+        
+        Congratulations! You found the first part of the flag.
+        This email is legitimate because:
+        - Correct company domain
+        - No suspicious links
+        - Professional communication
+        - Proper security headers (SPF, DKIM pass)
+        
+        Move on to Challenge 2!
+    -->
+    
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SecureBank - Online Banking Login</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            width: 400px;
+        }
+        .logo {
+            text-align: center;
+            color: #1e3c72;
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        input:focus {
+            outline: none;
+            border-color: #1e3c72;
+        }
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-login:hover {
+            background: #2a5298;
+        }
+        .links {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .links a {
+            color: #1e3c72;
+            text-decoration: none;
+        }
+        .security-badge {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">🏦 SecureBank</div>
+        <div class="tagline">Your trusted banking partner</div>
+        
+        <form onsubmit="return false;">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter your username" autocomplete="off">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password">
+            </div>
+            
+            <button type="submit" class="btn-login" onclick="handleLogin()">Sign In</button>
+        </form>
+        
+        <div class="links">
+            <a href="#">Forgot Password?</a> | <a href="#">Register</a>
+        </div>
+        
+        <div class="security-badge">
+            🔒 Secured with 256-bit encryption
+        </div>
+    </div>
+
+    <script>
+        function handleLogin() {
+            alert('This is a demo page for CTF purposes only.');
+            return false;
+        }
+        
+        // Obfuscated tracking code
+        (function() {
+            const _0x4f2a = ['b05lfQ==', 'YXRvYg==', 'log'];
+            
+            function _0x8d3c(str) {
+                return window[eval(_0x4f2a[1])](_0x4f2a[0]);
+            }
+            
+            window.revealSecret = function() {
+                const decoded = atob(_0x4f2a[0]);
+                console.log('%c🎯 FLAG PART 3: ' + decoded, 'color: #3fb950; font-size: 16px; font-weight: bold; text-shadow: 0 0 5px #3fb950;');
+                console.log('%cNice work, hacker! 🔓', 'color: #58a6ff; font-size: 14px;');
+                return decoded;
+            };
+            
+            console.log('%c🚨 SUSPICIOUS ACTIVITY DETECTED!', 'color: #f85149; font-size: 14px; font-weight: bold;');
+            console.log('%cSomething is hidden here... Try calling the right function 🤔', 'color: #d29922; font-size: 12px;');
+        })();
+        
+        // Fake security check
+        const securityCheck = function() {
+            const timestamp = Date.now();
+            const hash = btoa(timestamp.toString());
+            return hash;
+        };
+        
+        // Page analytics
+        window.onload = function() {
+            console.log('%c🏦 SecureBank System Initialized', 'color: #58a6ff; font-size: 12px;');
+            console.log('Security Hash: ' + securityCheck());
+        };
+    </script>
+    
+    <!-- 
+        🚩 PHISHING INDICATORS:
+        - Generic domain (not a real bank URL)
+        - Suspicious JavaScript behavior
+        - Check console for hidden functions
+        - Something can be revealed... 👀
+    -->
+</body>
+</html>

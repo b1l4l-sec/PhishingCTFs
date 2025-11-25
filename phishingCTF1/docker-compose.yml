@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  phishing-ctf:
+    build: .
+    container_name: phishing-ctf
+    ports:
+      - "8080:80"
+    restart: unless-stopped
