@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Arsenal - CTF Challenge</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 
+        Asset Version: v2. 3.1-rc13
+        Build: 0x2A | Rotation Factor: Lucky number between 12 and 14
+        Encoding Schema: [Primary: Ancient Roman Shift] [Secondary: Base of Duotrigesimal] 
+    -->
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">PHISHING ARSENAL</div>
+            <div class="nav-timer">
+                <span class="timer-label">Mission Time</span>
+                <span class="timer-value" id="timer">00:00</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-container">
+        <section class="hero-section">
+            <div class="hero-icon">🎯</div>
+            <h1 class="hero-title">Reverse Engineering Challenge</h1>
+            <p class="hero-desc">You've captured a phisher's toolkit. Extract the hidden intelligence from their malicious tools. </p>
+        </section>
+
+        <div class="flag-tracker">
+            <div class="tracker-header">Intelligence Gathered</div>
+            <div class="tracker-display" id="flag-display">SECOPS{??? _???}</div>
+            <div class="tracker-progress">
+                <span class="progress-label">Fragments</span>
+                <span class="progress-value" id="progress">0/2</span>
+            </div>
+        </div>
+
+        <!-- Challenge 1: Steganography -->
+        <article class="challenge-module" id="challenge-1">
+            <header class="module-header">
+                <div class="module-badge">01</div>
+                <div class="module-info">
+                    <h2 class="module-title">Visual Deception Analysis</h2>
+                    <p class="module-subtitle">Extract embedded intelligence from phishing assets</p>
+                </div>
+            </header>
+
+            <div class="module-content">
+                <p class="module-description">
+                    Attackers often hide credentials in images. This phishing template contains encoded data.  
+                    Download and analyze the image to reveal the hidden message.  Use steganography tools or manual pixel inspection.
+                </p>
+                <!--The truth lies where shadows meet the ground. 
+                    Seek the foundation, where secrets are bound.
+                    Red runs deep in what you cannot see,
+                    295 whispers where the answer will be.  -->
+                <div class="canvas-container">
+                    <canvas id="stego-canvas" width="600" height="300"></canvas>
+                    <div class="canvas-info">Company Logo Template - Suspected Data Carrier</div>
+                </div>
+
+                <div class="tool-panel">
+                    <button class="btn btn-primary" id="btn-download-image">
+                        <span class="btn-icon">💾</span>
+                        <span>Download Image</span>
+                    </button>
+                </div>
+
+                <div class="output-console" id="pixel-console"></div>
+                <div class="challenge-feedback" id="feedback-1"></div>
+
+                <div class="submission-panel" id="submit-panel-1">
+                    <label class="submission-label">Enter Extracted Fragment</label>
+                    <div class="submission-group">
+                        <input 
+                            type="text" 
+                            class="submission-input" 
+                            id="input-part-1" 
+                            placeholder="SECOPS{..."
+                            autocomplete="off"
+                        >
+                        <button class="btn btn-submit" id="submit-part-1">
+                            Submit Fragment
+                        </button>
+                    </div>
+                    <div class="submission-result" id="result-1"></div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Challenge 2: Multi-Layer Crypto Analysis -->
+        <article class="challenge-module" id="challenge-2" style="display: none;">
+            <header class="module-header">
+                <div class="module-badge">02</div>
+                <div class="module-info">
+                    <h2 class="module-title">Multi-Layer Cryptanalysis</h2>
+                    <p class="module-subtitle">Decrypt layered obfuscation techniques</p>
+                </div>
+            </header>
+
+            <div class="module-content">
+                <p class="module-description">
+                    Intercepted traffic shows sophisticated multi-layer encryption. The attacker used different 
+                    cipher techniques for each payload fragment. Identify the encryption method and decrypt each layer.
+                </p>
+
+                <div class="terminal-window">
+                    <div class="terminal-titlebar">
+                        <div class="terminal-buttons">
+                            <span class="btn-close"></span>
+                            <span class="btn-minimize"></span>
+                            <span class="btn-maximize"></span>
+                        </div>
+                        <div class="terminal-title">encrypted_traffic_capture. pcap</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="packet-header">╔═══ Encrypted Traffic Stream ═══╗</div>
+                        
+                        <div class="packet-line">
+                            <span class="packet-num">[PKT-001]</span>
+                            <span class="packet-method">POST</span> /exfil/stage1 HTTP/1.1
+                        </div>
+                        <div class="packet-data">Host: data-relay.phishing-ops[.]net</div>
+                        <div class="packet-data">X-Encoding: Type-A</div>
+                        <div class="packet-data">X-Fragment-ID: alpha</div>
+                        <div class="packet-data highlight">Encrypted-Payload: <span class="encoded-data">E3nY_U3e0_Jv</span></div>
+                        
+                        <div class="packet-separator">─────────────────────────────────</div>
+                        
+                        <div class="packet-line">
+                            <span class="packet-num">[PKT-002]</span>
+                            <span class="packet-method">POST</span> /exfil/stage2 HTTP/1.1
+                        </div>
+                        <div class="packet-data">Host: data-relay.phishing-ops[.]net</div>
+                        <div class="packet-data">X-Encoding: Type-B</div>
+                        <div class="packet-data">X-Fragment-ID: beta</div>
+                        <div class="packet-data highlight">Encrypted-Payload: <span class="encoded-data">ORUDA5LUL5NGK===</span></div>
+                        
+                        <div class="packet-separator">─────────────────────────────────</div>
+
+                        <div class="packet-line">
+                            <span class="packet-num">[PKT-004]</span>
+                            <span class="packet-method">POST</span> /noise/decoy HTTP/1.1
+                        </div>
+                        <div class="packet-data">Host: cdn-cache.different-domain[.]com</div>
+                        <div class="packet-data">X-Encoding: Type-C</div>
+                        <div class="packet-data highlight">Encrypted-Payload: <span class="encoded-data">3f8a92bd7c4e</span></div>
+                        
+                        <div class="packet-separator">─────────────────────────────────</div>
+                        
+                        <div class="packet-line">
+                            <span class="packet-num">[PKT-003]</span>
+                            <span class="packet-method">POST</span> /exfil/stage3 HTTP/1.1
+                        </div>
+                        <div class="packet-data">Host: data-relay.phishing-ops[.]net</div>
+                        <div class="packet-data">X-Encoding: Type-D</div>
+                        <div class="packet-data highlight">Encrypted-Payload: <span class="encoded-data">58 1A 57</span></div>
+                        
+                        <div class="packet-footer">╚════════════════════════════════╝</div>
+                        
+                        <div style="color: #768390; margin-top: 10px; font-size: 11px;">
+                            Analysis: Multiple encoding schemes detected in traffic stream
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-notes">
+                    <div class="notes-header">📋 Analyst Notes</div>
+                    <div class="notes-content">
+                        <p><strong>Observation 1:</strong> Different encoding types detected per packet</p>
+                        <p><strong>Observation 2:</strong> Fragment IDs suggest sequential reconstruction</p>
+                        <p><strong>Observation 3:</strong> One packet routes to different domain infrastructure</p>
+                    </div>
+                </div>
+
+                <div class="challenge-feedback" id="feedback-2"></div>
+
+                <div class="submission-panel" id="submit-panel-2">
+                    <label class="submission-label">Enter Reconstructed Fragment</label>
+                    <div class="submission-group">
+                        <input 
+                            type="text" 
+                            class="submission-input" 
+                            id="input-part-2" 
+                            placeholder="H3r0_..."
+                            autocomplete="off"
+                        >
+                        <button class="btn btn-submit" id="submit-part-2">
+                            Submit Fragment
+                        </button>
+                    </div>
+                    <div class="submission-result" id="result-2"></div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Final Submission -->
+        <article class="challenge-module final-module" id="final-challenge" style="display: none;">
+            <header class="module-header">
+                <div class="module-badge">🏁</div>
+                <div class="module-info">
+                    <h2 class="module-title">Mission Complete</h2>
+                    <p class="module-subtitle">Assemble the full intelligence report</p>
+                </div>
+            </header>
+
+            <div class="module-content">
+                <p class="module-description">
+                    All fragments recovered. Submit the complete flag to finalize the mission.
+                </p>
+
+                <div class="final-submission">
+                    <input 
+                        type="text" 
+                        class="final-input" 
+                        id="final-input" 
+                        placeholder="SECOPS{... }"
+                        autocomplete="off"
+                    >
+                    <button class="btn btn-final" id="btn-final-submit">
+                        Complete Mission
+                    </button>
+                </div>
+                <div class="final-result" id="final-result"></div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <p>Engineered by <a href="https://github.com/b1l4l-sec" target="_blank" rel="noopener">b1l4l</a></p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

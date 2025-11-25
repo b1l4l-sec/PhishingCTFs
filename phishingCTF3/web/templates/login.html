@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Account Validation Portal</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="header">
+    <h1>Account Validation Portal</h1>
+    <p class="subtitle">Training Simulation</p>
+    <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Toggle theme">
+      <span id="theme-label">Light</span> / Dark
+    </button>
+  </div>
+
+  <div class="defense-banner">
+    TRAINING ONLY • DO NOT USE REAL ORGANIZATIONAL CREDENTIALS
+  </div>
+
+  <div class="login-form">
+    <h2>Sign In</h2>
+    <form method="POST" action="/auth">
+      <label>
+        Username
+        <input type="text" name="username" autocomplete="off" required>
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" autocomplete="off" required>
+      </label>
+      <input type="hidden" name="token" value="{{ token }}">
+      <button type="submit">Validate Account</button>
+    </form>
+  </div>
+
+  <footer>
+    Simulation environment. Any captured data is sanitized automatically.
+    <br>
+    Project author:
+    <a href="https://github.com/b1l4l-sec" target="_blank" rel="noopener noreferrer">b1l4l</a>
+  </footer>
+
+<script>
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  document.getElementById('theme-label').textContent = t === 'dark' ? 'Dark' : 'Light';
+  localStorage.setItem('lab-theme', t);
+}
+function toggleTheme(){
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  applyTheme(current === 'light' ? 'dark' : 'light');
+}
+(function initTheme(){
+  const saved = localStorage.getItem('lab-theme') || 'light';
+  applyTheme(saved);
+})();
+</script>
+</body>
+</html>

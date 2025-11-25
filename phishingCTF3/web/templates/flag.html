@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flag Station</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    body { background:#0f1624; color:#e5e9f2; font-family: 'Segoe UI', Arial, sans-serif; margin:0; }
+    a { color:#5fa8ff; }
+    .container { max-width:900px; margin:40px auto 80px; padding:0 1.25rem; }
+    h1 { margin-bottom:4px; }
+    .subtitle { color:#9fb3c8; }
+    .panel { background:#1e2a3b; border:1px solid #273447; padding:18px 22px; margin:18px 0; border-radius:8px; }
+    .panel h2 { margin-top:0; color:#5fa8ff; font-size:20px; }
+    input[type=text], textarea {
+      width:100%; padding:10px 12px; background:#182333; color:#d6dde7;
+      border:1px solid #2d3d52; border-radius:6px; font-size:14px;
+    }
+    input[type=text]:focus, textarea:focus { outline:2px solid #5fa8ff33; }
+    button {
+      background:#3178c6; color:#fff; padding:10px 18px; border:none;
+      border-radius:6px; cursor:pointer; font-weight:600; letter-spacing:0.5px;
+    }
+    button:hover { background:#3d84d4; }
+    .flag-part { font-family:monospace; background:#142131; display:inline-block; padding:6px 10px; border-radius:4px; margin:4px 0; }
+    .final { background:#0d5f3f; }
+    .messages div { margin:4px 0; }
+    .hints { font-size:12px; background:#142131; padding:8px; border-radius:6px; margin-top:10px; }
+    .progress { font-size:12px; color:#9fb3c8; }
+    .locked { opacity:0.55; filter:grayscale(.15); }
+    .ok { color:#5ad68a; font-weight:600; }
+    .warning { color:#ffb347; font-weight:600; }
+    footer {
+      position:fixed;
+      left:0; right:0; bottom:0;
+      background:#1e2a3b;
+      border-top:1px solid #273447;
+      color:#9fb3c8;
+      font-size:12px;
+      text-align:center;
+      padding:10px 8px;
+    }
+    footer a { color:#5fa8ff; text-decoration:none; font-weight:600; }
+    footer a:hover { text-decoration:underline; }
+    @media (max-width:620px){
+      .container { margin:30px auto 120px; }
+      .panel { padding:16px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Flag Station</h1>
+    <p class="subtitle">Three stages. Each unlocks a segment. Assemble them for the final flag.</p>
+
+    {% if messages %}
+    <div class="panel messages">
+      {% for m in messages %}
+        <div>{{ m }}</div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if hints and hints|length > 0 %}
+    <div class="panel hints">
+      <strong>Hints unlocked:</strong>
+      <ul style="margin:6px 0 0 18px;">
+        {% for h in hints %}
+          <li>{{ h }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <div class="panel">
+      <h2>Progress</h2>
+      <p class="progress">
+        Step1: {{ '✔' if progress.step1_done else '✖' }} |
+        Step2: {{ '✔' if progress.step2_done else '✖' }} |
+        Step3: {{ '✔' if progress.step3_done else '✖' }}
+      </p>
+      {% if part1 %}<p>Segment 1: <span class="flag-part">{{ part1 }}</span></p>{% endif %}
+      {% if part2 %}<p>Segment 2: <span class="flag-part">{{ part2 }}</span></p>{% endif %}
+      {% if part3 %}<p>Segment 3: <span class="flag-part">{{ part3 }}</span></p>{% endif %}
+      {% if final_flag %}
+        <hr>
+        <p class="ok">Final Flag Assembled:</p>
+        <p class="flag-part final">{{ final_flag }}</p>
+      {% endif %}
+    </div>
+
+    <div class="panel {% if progress.step1_done %}locked{% endif %}">
+      <h2>Step 1 — Extract Email Portal URL</h2>
+      {% if progress.step1_done %}
+        <p class="ok">Completed.</p>
+      {% else %}
+        <p>Find the full URL embedded in the training email (raw artifact, look for anchor href). Submit exact scheme + host + path + query.</p>
+        <form method="post" action="/flag">
+          <input type="hidden" name="step" value="url">
+          <label for="url">Full URL</label>
+          <input type="text" id="url" name="url" placeholder="http://.../?tid=..." required>
+          <button type="submit">Submit Step 1</button>
+        </form>
+      {% endif %}
+    </div>
+
+    <div class="panel {% if not progress.step1_done %}locked{% endif %} {% if progress.step2_done %}locked{% endif %}">
+      <h2>Step 2 — Decode Tracking Token</h2>
+      {% if not progress.step1_done %}
+        <p class="warning">Complete Step 1 first.</p>
+      {% elif progress.step2_done %}
+        <p class="ok">Completed.</p>
+      {% else %}
+        <p>The tid query value is reversible base64. Decode it and submit the plaintext.</p>
+        <form method="post" action="/flag">
+          <input type="hidden" name="step" value="decoded">
+          <label for="decoded">Decoded token</label>
+          <input type="text" id="decoded" name="decoded" placeholder="username:descriptor" required>
+          <button type="submit">Submit Step 2</button>
+        </form>
+      {% endif %}
+    </div>
+
+    <div class="panel {% if not progress.step2_done %}locked{% endif %}">
+      <h2>Step 3 — Provide Indicators</h2>
+      {% if not progress.step2_done %}
+        <p class="warning">Complete Steps 1 & 2 first.</p>
+      {% elif progress.step3_done %}
+        <p class="ok">Completed.</p>
+      {% else %}
+        <p>Submit ≥5 phishing indicators. Include: urgency/fear, domain/sender anomaly, token reference, year/template mismatch.</p>
+        <form method="post" action="/flag">
+          <input type="hidden" name="step" value="indicators">
+          <label for="indicators">Indicators list</label>
+          <textarea id="indicators" name="indicators" rows="8" placeholder="1. ...&#10;2. ...&#10;3. ..."></textarea>
+          <button type="submit">Submit Step 3</button>
+        </form>
+      {% endif %}
+    </div>
+
+    <div class="panel" style="font-size:12px;">
+      <strong>Note:</strong> Hints appear only after incorrect submissions. Avoid guess spam; analyze artifacts.
+    </div>
+  </div>
+
+  <footer>
+    Challenge platform extension. Author:
+    <a href="https://github.com/b1l4l-sec" target="_blank" rel="noopener noreferrer">b1l4l</a>
+  </footer>
+</body>
+</html>

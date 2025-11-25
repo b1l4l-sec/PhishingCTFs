@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  phishing-web:
+    build: ./web
+    container_name: phishing_ctf_web
+    ports:
+      - "5000:5000"
+    environment:
+      - TRACKING_SALT=lab-salt-123
+      - ADMIN_RESET_TOKEN=reset-me-123
+    volumes:
+      - ./web:/app
+      - ./mail:/mail
+      - ./analysis:/analysis

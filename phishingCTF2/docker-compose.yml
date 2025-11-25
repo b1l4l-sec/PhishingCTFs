@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  phishing-ctf-pro:
+    build: .
+    container_name: phishing-ctf-pro
+    ports:
+      - "9000:80"
+    restart: unless-stopped

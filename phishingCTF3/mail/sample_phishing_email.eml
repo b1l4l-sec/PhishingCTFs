@@ -1,0 +1,33 @@
+Return-Path: <security-update@account-secure.example.com>
+Received: from smtp.fake-mail.example (smtp.fake-mail.example [203.0.113.55])
+        by user-mail.local with ESMTPS id ABC123
+        for <victim@company.test>; Mon, 24 Nov 2025 10:11:04 +0000
+Subject: ACTION REQUIRED: Security Validation Needed
+From: "Security Team" <security-update@account-secure.example.com>
+To: <victim@company.test>
+Date: Mon, 24 Nov 2025 10:11:00 +0000
+Message-ID: <secure-validate-9981@account-secure.example.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="UTF-8"
+
+<html>
+  <body style="font-family: Arial, sans-serif; background:#f6f6f6; padding:20px;">
+    <div style="max-width:600px;margin:auto;background:#ffffff;padding:20px;border:1px solid #ddd;">
+      <h2 style="color:#004488;">Company Security Notice</h2>
+      <p>Your account requires immediate security validation due to recent policy updates.</p>
+      <p><b>Failure to validate may result in temporary access suspension.</b></p>
+      <p style="font-size:14px;">
+        Please click the secure validation portal below:
+      </p>
+      <!-- Tracking token base64 (tid param) -->
+      <p>
+        <a href="http://localhost:5000/?tid=c2FtcGxlVXNlcjpMYWItVHJhY2tpbmc=" style="background:#1a5fb4;color:#fff;padding:10px 16px;text-decoration:none;border-radius:4px;">
+          Validate Now
+        </a>
+      </p>
+      <hr>
+      <p style="font-size:11px;color:#666;">Automated security notification. ©2023 Account Services</p>
+      <!-- Mismatch year and domain suspicious -->
+    </div>
+  </body>
+</html>

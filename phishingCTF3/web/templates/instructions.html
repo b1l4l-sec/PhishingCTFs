@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phishing Analysis Lab Instructions</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="header">
+    <h1>Phishing Analysis Training Lab</h1>
+    <p class="subtitle">Ethical Use Only – Do Not Enter Real Credentials</p>
+  </div>
+  <div class="defense-banner">TRAINING ONLY – DO NOT USE REAL PASSWORDS</div>
+
+  <section class="content">
+    <h2>Scenario</h2>
+    <p>A suspicious email was reported. Analyze the artifacts, decode tracking, observe credential capture behavior, and enumerate IOCs.</p>
+
+    <h2>Tasks</h2>
+    <ol>
+      <li>Review the phishing email (<a href="/email">/email</a>) – list 5 indicators.</li>
+      <li>Extract spoofed vs. actual link destination.</li>
+      <li>Decode base64 tracking token (tid parameter).</li>
+      <li>Submit test credentials – observe behavior.</li>
+      <li>Identify storage mechanism for captured credentials (view sanitized log at <a href="/logview">/logview</a>).</li>
+      <li>List two browser/user interface features that could alert a user.</li>
+      <li>Build IOC JSON based on schema (<a href="/ioc-schema">/ioc-schema</a>).</li>
+      <li>Find OPSEC mistakes in source (download <a href="/download/site.zip">zip artifacts</a>).</li>
+      <li>Add defensive banner (already visible) – describe rationale.</li>
+      <li>Summarize attempts using /scoreboard output.</li>
+    </ol>
+
+    <h2>Endpoints</h2>
+    <ul>
+      <li><code>/</code> (phishing form – optionally append <code>?tid=TOKEN</code>)</li>
+      <li><code>/email</code> (rendered phishing email)</li>
+      <li><code>/download/email.eml</code> (raw email)</li>
+      <li><code>/download/site.zip</code> (artifact bundle)</li>
+      <li><code>/ioc-schema</code> (JSON schema)</li>
+      <li><code>/scoreboard</code> (JSON attempt stats)</li>
+      <li><code>/logview</code> (sanitized captured attempts)</li>
+    </ul>
+
+    <h2>Ethics</h2>
+    <p>No real credential use. No external mailing. Lab is isolated for defensive study only.</p>
+  </section>
+</body>
+</html>

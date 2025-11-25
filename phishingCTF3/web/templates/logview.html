@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Captured Credential Attempts (Sanitized)</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="header">
+    <h1>Credential Attempt Log (Sanitized)</h1>
+    <p class="subtitle">Passwords scrubbed for safety</p>
+  </div>
+  <div class="content">
+    <p>Total Attempts: <strong>{{ total }}</strong></p>
+    <table style="width:100%; border-collapse: collapse; font-size:12px;">
+      <thead>
+        <tr style="background:#243a63;color:#fff;">
+          <th style="padding:4px;">Timestamp (UTC)</th>
+          <th style="padding:4px;">User</th>
+          <th style="padding:4px;">Scrubbed Password</th>
+          <th style="padding:4px;">IP</th>
+          <th style="padding:4px;">User-Agent</th>
+          <th style="padding:4px;">Token</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for a in attempts %}
+        <tr style="background:#fff; border-bottom:1px solid #ddd;">
+          <td style="padding:4px;">{{ a.timestamp }}</td>
+          <td style="padding:4px;">{{ a.user }}</td>
+          <td style="padding:4px;">{{ a.pass_scrubbed }}</td>
+          <td style="padding:4px;">{{ a.ip }}</td>
+          <td style="padding:4px;">{{ a.ua }}</td>
+          <td style="padding:4px;">{{ a.token }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
