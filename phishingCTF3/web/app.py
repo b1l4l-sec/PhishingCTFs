@@ -137,9 +137,6 @@ def tracking_demo():
     return {"generated_token": generate_token(raw_id), "raw": raw_id}
 
 # --------------------------- Artifact & Info ---------------------------
-@app.route("/instructions")
-def instructions():
-    return render_template("instructions.html")
 
 @app.route("/email")
 def email_view():
@@ -151,11 +148,6 @@ def download_email():
     if not EMAIL_FILE.exists():
         abort(404)
     return send_file(EMAIL_FILE, as_attachment=True, download_name="sample_phishing_email.eml")
-
-@app.route("/download/site.zip")
-def download_zip():
-    ensure_zip()
-    return send_file(ZIP_EXPORT, as_attachment=True, download_name="phish_lab_artifacts.zip")
 
 @app.route("/artifact/<name>")
 def artifact(name):
