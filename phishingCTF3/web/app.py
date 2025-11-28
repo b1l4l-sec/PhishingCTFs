@@ -137,6 +137,9 @@ def tracking_demo():
     return {"generated_token": generate_token(raw_id), "raw": raw_id}
 
 # --------------------------- Artifact & Info ---------------------------
+@app.route("/instructions")
+def instructions():
+    return render_template("instructions.html")
 
 @app.route("/email")
 def email_view():
@@ -148,6 +151,11 @@ def download_email():
     if not EMAIL_FILE.exists():
         abort(404)
     return send_file(EMAIL_FILE, as_attachment=True, download_name="sample_phishing_email.eml")
+
+@app.route("/download/site.zip")
+def download_zip():
+    ensure_zip()
+    return send_file(ZIP_EXPORT, as_attachment=True, download_name="phish_lab_artifacts.zip")
 
 @app.route("/artifact/<name>")
 def artifact(name):
@@ -181,7 +189,7 @@ FLAG_PART3 = "4l2st1n2"
 FINAL_FLAG = FLAG_PART1 + FLAG_PART2 + FLAG_PART3 + "}"
 
 # Expected correct values (NOT shown to players) NEED TO CHANGE IN HERE IF HOSTED ON THE VPS
-EXPECTED_FULL_URL = "https://secops-ensaf.com:2096/?tid=c2FtcGxlVXNlcjpMYWItVHJhY2tpbmc="
+EXPECTED_FULL_URL = "https://freepalestine/?tid=c2FtcGxlVXNlcjpMYWItVHJhY2tpbmc="
 EXPECTED_DECODED = "sampleUser:Lab-Tracking"
 
 # Attempt counters for adaptive hints
