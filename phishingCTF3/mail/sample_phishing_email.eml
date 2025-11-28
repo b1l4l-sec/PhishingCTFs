@@ -21,7 +21,7 @@ Content-Type: text/html; charset="UTF-8"
       </p>
       <!-- Tracking token base64 (tid param) -->
       <p>
-        <a href="http://localhost:5000/?tid=c2FtcGxlVXNlcjpMYWItVHJhY2tpbmc=" style="background:#1a5fb4;color:#fff;padding:10px 16px;text-decoration:none;border-radius:4px;">
+        <a href="https://secops-ensaf.com:2096/tid=c2FtcGxlVXNlcjpMYWItVHJhY2tpbmc=" style="background:#1a5fb4;color:#fff;padding:10px 16px;text-decoration:none;border-radius:4px;">
           Validate Now
         </a>
       </p>
