@@ -181,7 +181,7 @@ FLAG_PART3 = "4l2st1n2"
 FINAL_FLAG = FLAG_PART1 + FLAG_PART2 + FLAG_PART3 + "}"
 
 # Expected correct values (NOT shown to players) NEED TO CHANGE IN HERE IF HOSTED ON THE VPS
-EXPECTED_FULL_URL = "https://freepalestine/?tid=c2FtcGxlVXNlcjpMYWItVHJhY2tpbmc="
+EXPECTED_FULL_URL = "https://secops-ensaf.com:2096/?tid=c2FtcGxlVXNlcjpMYWItVHJhY2tpbmc="
 EXPECTED_DECODED = "sampleUser:Lab-Tracking"
 
 # Attempt counters for adaptive hints
