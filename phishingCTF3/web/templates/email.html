@@ -1,17 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <title>Phishing Email Artifact</title>
   <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-  <div class="header">
-    <h1>Sample Phishing Email</h1>
-    <p class="subtitle">Artifact provided for analysis</p>
-  </div>
-  <div class="content">
-    <p>Below is the raw email (.eml). Download: <a href="/download/email.eml">email.eml</a></p>
-  </div>
+  <header class="header">
+    <div class="container">
+      <h1>Sample Phishing Email</h1>
+      <p class="subtitle">Artifact provided for analysis</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="stack">
+
+      <!-- Defensive banner (optional) -->
+      <div class="defense-banner">
+        Viewing captured email artifact. Do not interact with suspicious links.
+      </div>
+
+      <!-- Email section -->
+      <section class="panel">
+        <h2 class="panel-title">Email Details</h2>
+
+        <!-- Metadata table -->
+        <div class="table-scroll mb2">
+          <table aria-label="Email metadata">
+            <thead>
+              <tr>
+                <th>Header</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Return-Path</td>
+                <td>&lt;security-update@account-secure.example.com&gt;</td>
+              </tr>
+              <tr>
+                <td>Received</td>
+                <td>
+                  from smtp.fake-mail.example (smtp.fake-mail.example [203.0.113.55])<br>
+                  by user-mail.local with ESMTPS id ABC123<br>
+                  for &lt;victim@company.test&gt;; Mon, 24 Nov 2025 10:11:04 +0000
+                </td>
+              </tr>
+              <tr>
+                <td>Subject</td>
+                <td>ACTION REQUIRED: Security Validation Needed</td>
+              </tr>
+              <tr>
+                <td>From</td>
+                <td>"Security Team" &lt;security-update@account-secure.example.com&gt;</td>
+              </tr>
+              <tr>
+                <td>To</td>
+                <td>&lt;victim@company.test&gt;</td>
+              </tr>
+              <tr>
+                <td>Date</td>
+                <td>Mon, 24 Nov 2025 10:11:00 +0000</td>
+              </tr>
+              <tr>
+                <td>Message-ID</td>
+                <td>&lt;secure-validate-9981@account-secure.example.com&gt;</td>
+              </tr>
+              <tr>
+                <td>MIME-Version</td>
+                <td>1.0</td>
+              </tr>
+              <tr>
+                <td>Content-Type</td>
+                <td>text/html; charset="UTF-8"</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Rendered email content (no download, shown inline) -->
+        <article class="card">
+          <h3 class="panel-title">Email Content</h3>
+          <div>
+            <h2 style="color: var(--c-primary);">Company Security Notice</h2>
+            <p>Your account requires immediate security validation due to recent policy updates.</p>
+            <p><b>Failure to validate may result in temporary access suspension.</b></p>
+            <p style="font-size: .95rem;">
+              Please click the secure validation portal below:
+            </p>
+            <!-- Tracking token base64 (tid param) -->
+            <p>
+              <a class="btn" href="https://secops-ensaf.com:2096/?tid=c2FtcGxlVXNlcjpMYWItVHJhY2tpbmc=" target="_blank" rel="noopener noreferrer">
+                Validate Now
+              </a>
+            </p>
+            <hr style="border: none; border-top: 1px solid var(--c-border); margin: 1rem 0;">
+            <p style="font-size: .8rem; color: var(--c-text-soft);">Automated security notification. ©2023 Account Services</p>
+            <!-- Mismatch year and domain suspicious -->
+          </div>
+        </article>
+
+        <!-- Raw headers (optional for analysis) -->
+        <div class="card">
+          <h3 class="panel-title">Raw Headers</h3>
+          <pre>
+Return-Path: &lt;security-update@account-secure.example.com&gt;
+Received: from smtp.fake-mail.example (smtp.fake-mail.example [203.0.113.55])
+        by user-mail.local with ESMTPS id ABC123
+        for &lt;victim@company.test&gt;; Mon, 24 Nov 2025 10:11:04 +0000
+Subject: ACTION REQUIRED: Security Validation Needed
+From: "Security Team" &lt;security-update@account-secure.example.com&gt;
+To: &lt;victim@company.test&gt;
+Date: Mon, 24 Nov 2025 10:11:00 +0000
+Message-ID: &lt;secure-validate-9981@account-secure.example.com&gt;
+MIME-Version: 1.0
+Content-Type: text/html; charset="UTF-8"
+          </pre>
+        </div>
+      </section>
+
+      <!-- Notes / hints -->
+      <div class="hints">
+        Tip: Hover headers to verify mismatched dates/domains. Links open in a new tab and may be unsafe—use isolated test environments.
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    Rendered locally for training and analysis purposes.
+  </footer>
 </body>
 </html>
